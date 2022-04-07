@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw dice</title>
+    <style>
+        #winner{
+            height: 50px;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+#member1,#member2,#member3{
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    font-size: 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    
+}
+#roll{
+    margin-left: 45%;
+    margin-top: 10px;
+    padding: 15px;
+}
+    </style>
+</head>
+<body>
+    <div id="winner"></div>
+    <div id="member1">0</div>
+    <div id="member2">0</div>
+    <div id="member3">0</div>
+    <button onclick="rolldice()" id="roll"> ROLL THE DICE</button>
+</body>
+</html>
+<script>
+    function rolldice(){
+var display=document.querySelector("#winner")
+var m1=document.querySelector("#member1")
+var m2=document.querySelector("#member2")
+var m3=document.querySelector("#member3")
+var d1=Math.floor(Math.random()*6)+1;
+var d2=Math.floor(Math.random()*6)+1;
+var d3=Math.floor(Math.random()*6)+1;
+m1.innerHTML=d1
+m2.innerHTML=d2
+m3.innerHTML=d3
+//document.querySelector("#roll").append(m1,m2,m3)
+if(d1>d2&&d1>d3){
+    display.innerHTML="A is winner"
+    m1.style.background="green"
+    if(d2>d3){
+        m2.style.background="yellow"
+    }
+    
+    else{
+        m2.style.background="red"
+    }
+    if(d3<d1&&d3<d2){
+m3.style.background="red"
+    }
+    else{
+        m3.style.background="yellow"
+    }
+    if(d2==d3){
+        m2.style.background="blue"
+        m3.style.background="blue"
+    }
+    
+}
+if(d1<d2&&d2>d3){
+    display.innerHTML="B is winner"
+    m2.style.background="green"
+    if(d1>d3){
+        m1.style.background="yellow"
+    }
+    
+    else{
+        m1.style.background="red"
+    }
+    if(d3<d1&&d3<d2){
+m3.style.background="red"
+    }
+    else{
+        m3.style.background="yellow"
+    }
+     if(d1==d3){
+        m1.style.background="blue"
+        m3.style.background="blue"
+    }
+    
+}
+if(d3>d2&&d1<d3){
+    display.innerHTML="C is winner"
+    m3.style.background="green"
+    if(d2>d1){
+        m2.style.background="yellow"
+    }
+    
+    else{
+        m2.style.background="red"
+    }
+    if(d2>d1&&d1<d3){
+m1.style.background="red"
+    }
+    else{
+        m1.style.background="yellow"
+    }
+    if(d1==d2){
+        m2.style.background="blue"
+        m1.style.background="blue"
+    }
+    
+}
+if(d1==d2&&d2==d3){
+display.innerHTML="Draw"
+m1.style.background="blue"
+m2.style.background="blue"
+m3.style.background="blue"
+}
+if(d1==d2&&d1>d3){
+    display.innerHTML="Roll the dice again"
+    m1.style.background="blue"
+    m2.style.background="blue"
+    m3.style.background="red"
+
+}
+if(d3==d2&&d1<d3){
+    display.innerHTML="Roll the dice again"
+    m3.style.background="blue"
+    m2.style.background="blue"
+    m1.style.background="red"
+
+}
+if(d1==d3&&d1>d2){
+    display.innerHTML="Roll the dice again"
+    m1.style.background="blue"
+    m3.style.background="blue"
+    m2.style.background="red"
+
+}
+
+    }
+    
+</script>
